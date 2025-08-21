@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000;
+  }
+  50% {
+    box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 25px #ff0000;
+  }
+  100% {
+    box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000;
+  }
+}
+
+.shadow-glow {
+  animation: pulse-glow 2s infinite;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -23,4 +39,15 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  cursor: none;
+}
+
+/* Hide cursor on clickable elements */
+a, button, [role="button"], input[type="submit"], input[type="button"], input[type="reset"] {
+  cursor: none;
+}
+
+/* Prevent cursor from showing on hover */
+* {
+  cursor: none !important;
 }
