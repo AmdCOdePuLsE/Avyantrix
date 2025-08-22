@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
-interface TeamMemberProps {
+interface TeamMemberData {
+  id: number | string;
   name: string;
   role: string;
   image: string;
@@ -15,16 +16,16 @@ interface TeamMemberProps {
     linkedin?: string;
     instagram?: string;
   };
+  joinedDate?: string;
+  isActive?: boolean;
 }
 
-const TeamMember = ({
-  name,
-  role,
-  image,
-  bio,
-  skills,
-  social,
-}: TeamMemberProps) => {
+interface TeamMemberProps {
+  member: TeamMemberData;
+}
+
+const TeamMember = ({ member }: TeamMemberProps) => {
+  const { name, role, image, bio, skills, social } = member;
   return (
     <motion.div
       whileHover={{ y: -5 }}
