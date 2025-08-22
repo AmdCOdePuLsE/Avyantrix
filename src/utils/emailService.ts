@@ -1,6 +1,18 @@
 // EmailJS configuration utility
 import emailjs from '@emailjs/browser';
 
+// Type definitions
+interface ApplicationFormData {
+  name: string;
+  email: string;
+  phone?: string;
+  education?: string;
+  skills: string;
+  experience?: string;
+  motivation: string;
+  resume?: File | null;
+}
+
 // Initialize EmailJS with public key
 export const initEmailJS = () => {
   const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
@@ -12,7 +24,7 @@ export const initEmailJS = () => {
 };
 
 // Send application email to admin via EmailJS
-export const sendApplicationEmail = async (formData: any) => {
+export const sendApplicationEmail = async (formData: ApplicationFormData) => {
   const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
   const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
 
@@ -39,7 +51,7 @@ export const sendApplicationEmail = async (formData: any) => {
 };
 
 // Send confirmation email to applicant via EmailJS
-export const sendConfirmationEmail = async (formData: any) => {
+export const sendConfirmationEmail = async (formData: ApplicationFormData) => {
   const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
   const templateId = process.env.NEXT_PUBLIC_EMAILJS_CONFIRMATION_TEMPLATE_ID;
 
@@ -71,7 +83,7 @@ The Avyantrix Team`
 };
 
 // Alternative: Send email via Resend API
-export const sendApplicationViaResend = async (formData: any) => {
+export const sendApplicationViaResend = async (formData: ApplicationFormData) => {
   const response = await fetch('/api/submit-application-resend', {
     method: 'POST',
     headers: {
@@ -88,7 +100,7 @@ export const sendApplicationViaResend = async (formData: any) => {
 };
 
 // Alternative: Send email via API route (using Nodemailer)
-export const sendApplicationViaAPI = async (formData: any) => {
+export const sendApplicationViaAPI = async (formData: ApplicationFormData) => {
   const response = await fetch('/api/submit-application', {
     method: 'POST',
     headers: {

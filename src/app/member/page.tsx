@@ -520,8 +520,8 @@ const MemberPage = () => {
                   <p className="text-green-400 text-center font-medium">
                     🎉 Thank you for your application! 
                     {emailConfigured ? (
-                      <>We've sent a confirmation email to <span className="font-bold">{formData.email}</span>. 
-                      We'll review your application and get back to you within 48 hours.</>
+                      <>We&apos;ve sent a confirmation email to <span className="font-bold">{formData.email}</span>. 
+                      We&apos;ll review your application and get back to you within 48 hours.</>
                     ) : (
                       <>Your application has been received. Since email is not configured, please contact us directly.</>
                     )}
@@ -561,7 +561,7 @@ const MemberPage = () => {
               📧 Applications are reviewed on a rolling basis
             </p>
             <p className="text-red-400 text-sm font-medium">
-              We'll get back to you within 48 hours
+              We&apos;ll get back to you within 48 hours
             </p>
           </div>
         </motion.div>

@@ -119,7 +119,6 @@ const Contact = () => {
               <input
                 type="text"
                 id="name"
-                name="name"
                 placeholder="Your Name"
                 className={`w-full bg-black/30 border ${
                   formik.touched.name && formik.errors.name
@@ -137,7 +136,6 @@ const Contact = () => {
               <input
                 type="email"
                 id="email"
-                name="email"
                 placeholder="Your Email"
                 className={`w-full bg-black/30 border ${
                   formik.touched.email && formik.errors.email
@@ -155,7 +153,6 @@ const Contact = () => {
               <input
                 type="text"
                 id="subject"
-                name="subject"
                 placeholder="Subject"
                 className={`w-full bg-black/30 border ${
                   formik.touched.subject && formik.errors.subject
@@ -174,7 +171,6 @@ const Contact = () => {
             <div>
               <textarea
                 id="message"
-                name="message"
                 placeholder="Your Message"
                 rows={5}
                 className={`w-full bg-black/30 border ${
