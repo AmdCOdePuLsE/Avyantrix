@@ -47,8 +47,8 @@ export default function LoginPage() {
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('teamId', formData.teamId);
         
-        // Redirect to team page
-        router.push('/team');
+        // Redirect to dashboard
+        router.push('/dashboard');
       } else {
         setError('Invalid team ID or password');
       }

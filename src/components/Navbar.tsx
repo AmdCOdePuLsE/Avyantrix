@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
-import { contactInfo, socialLinks } from '@/data';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -19,6 +19,12 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    // Check authentication status
+    const authStatus = localStorage.getItem('isAuthenticated');
+    setIsAuthenticated(authStatus === 'true');
+  }, [pathname]);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -31,14 +37,6 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
-  const handleMenuItemClick = (href: string) => {
-    setIsMenuOpen(false);
-    if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      element?.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '#about' },
@@ -47,6 +45,7 @@ const Navbar = () => {
     { name: 'Gallery', href: '#gallery' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
+    ...(isAuthenticated ? [{ name: 'Dashboard', href: '/dashboard' }] : []),
   ];
 
   return (

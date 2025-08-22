@@ -241,14 +241,14 @@ const TeamPage = () => {
               
               {!isAuthenticated ? (
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/login">
+                  <Link href="/dashboard">
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full sm:w-auto"
                     >
                       <FaSignInAlt />
-                      Login
+                      Access Dashboard
                     </motion.button>
                   </Link>
                   
