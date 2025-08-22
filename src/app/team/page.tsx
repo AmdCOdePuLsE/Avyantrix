@@ -33,6 +33,14 @@ const TeamPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  // Check authentication status on mount
+  useEffect(() => {
+    const authStatus = localStorage.getItem('isAuthenticated');
+    if (authStatus === 'true') {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
   // Mock data - will be replaced with Supabase data
   useEffect(() => {
     // Simulate loading from database
@@ -233,18 +241,16 @@ const TeamPage = () => {
               
               {!isAuthenticated ? (
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
-                    onClick={() => {
-                      // TODO: Implement Supabase Auth
-                      alert('Supabase authentication will be implemented here');
-                    }}
-                  >
-                    <FaSignInAlt />
-                    Login
-                  </motion.button>
+                  <Link href="/login">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition-colors w-full sm:w-auto"
+                    >
+                      <FaSignInAlt />
+                      Login
+                    </motion.button>
+                  </Link>
                   
                   <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -260,19 +266,36 @@ const TeamPage = () => {
                   </motion.button>
                 </div>
               ) : (
-                <div className="text-center">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors mx-auto"
-                    onClick={() => {
-                      // TODO: Navigate to profile editing
-                      alert('Profile editing will be implemented here');
-                    }}
-                  >
-                    <FaPlus />
-                    Update My Profile
-                  </motion.button>
+                <div className="text-center space-y-4">
+                  <p className="text-green-400 font-medium">✓ Authenticated as Team Member</p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+                      onClick={() => {
+                        // TODO: Navigate to profile editing
+                        alert('Profile editing will be implemented here');
+                      }}
+                    >
+                      <FaPlus />
+                      Update My Profile
+                    </motion.button>
+                    
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+                      onClick={() => {
+                        localStorage.removeItem('isAuthenticated');
+                        setIsAuthenticated(false);
+                      }}
+                    >
+                      <FaSignInAlt />
+                      Logout
+                    </motion.button>
+                  </div>
                 </div>
               )}
               
