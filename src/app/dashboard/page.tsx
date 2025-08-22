@@ -72,16 +72,16 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary via-secondary/20 to-primary">
+    <div className="min-h-screen bg-gradient-to-br from-primary via-secondary/20 to-primary cursor-auto">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-red-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
       </div>
 
-      <div className="relative z-10 flex min-h-screen">
+      <div className="relative z-10 flex min-h-screen cursor-auto">
         {/* Sidebar */}
-        <div className="w-64 bg-black/20 backdrop-blur-sm border-r border-red-500/20 p-6">
+        <div className="w-64 bg-black/20 backdrop-blur-sm border-r border-red-500/20 p-6 cursor-auto">
           {/* Header */}
           <div className="mb-8">
             <motion.h1 
@@ -106,7 +106,7 @@ const Dashboard = () => {
                   onClick={() => setActiveSection(item.id)}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 cursor-auto ${
                     isActive 
                       ? 'bg-red-600/20 border border-red-500/30 text-red-400' 
                       : 'text-white/70 hover:bg-white/5 hover:text-white'
@@ -128,7 +128,7 @@ const Dashboard = () => {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-white/70 hover:bg-white/5 hover:text-white transition-all duration-200"
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-white/70 hover:bg-white/5 hover:text-white transition-all duration-200 cursor-auto"
               >
                 <FaHome className="text-lg" />
                 <span>Back to Home</span>
@@ -139,7 +139,7 @@ const Dashboard = () => {
               onClick={handleLogout}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-400 hover:bg-red-600/10 hover:text-red-300 transition-all duration-200"
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-400 hover:bg-red-600/10 hover:text-red-300 transition-all duration-200 cursor-auto"
             >
               <FaSignOutAlt className="text-lg" />
               <span>Logout</span>
@@ -148,13 +148,13 @@ const Dashboard = () => {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 p-8">
+        <div className="flex-1 p-8 cursor-auto">
           <motion.div
             key={activeSection}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="max-w-6xl mx-auto"
+            className="max-w-6xl mx-auto cursor-auto"
           >
             {activeSection === 'profile' && <ProfileSection />}
             {activeSection === 'tasks' && <TaskSection />}
