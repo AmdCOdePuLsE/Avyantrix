@@ -2,11 +2,25 @@
   "name": "avyantrix",
   "version": "0.1.0",
   "private": true,
+  "description": "Innovation Through Excellence - Team Avyantrix official website",
+  "keywords": ["avyantrix", "team", "innovation", "hackathon", "engineering", "technology"],
+  "author": "Team Avyantrix",
+  "homepage": "https://github.com/AmdCOdePuLsE/Avyantrix",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AmdCOdePuLsE/Avyantrix.git"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "vercel-build": "next build"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
